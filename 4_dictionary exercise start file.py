@@ -1,7 +1,9 @@
 # This program uses a dictionary as a deck of cards.
+import random
 
 def main():
     # Create a deck of cards.
+    a_deck = create_deck() #for value returning function, need some kind of variable to return that value to, which is a_deck
    
 
     # Get the number of cards to deal.
@@ -10,7 +12,7 @@ def main():
 
 
     # Deal the cards.
-
+    deal_cards(a_deck, num_cards)
 
     
     
@@ -20,6 +22,8 @@ def main():
 def create_deck():
     # Create a dictionary with each card and its value
     # stored as key-value pairs.
+    #
+    #keys must be unique, thats why the name of the card is the key and not the number
     deck = {'Ace of Spades':1, '2 of Spades':2, '3 of Spades':3,
             '4 of Spades':4, '5 of Spades':5, '6 of Spades':6,
             '7 of Spades':7, '8 of Spades':8, '9 of Spades':9,
@@ -45,6 +49,7 @@ def create_deck():
             'Queen of Diamonds':10, 'King of Diamonds': 10}
 
     # Return the deck.
+    return deck
 
 
 
@@ -52,25 +57,34 @@ def create_deck():
 # The deal_cards function deals a specified number of cards
 # from the deck.
 
-def deal_cards(deck, number):
+def deal_cards(deck, number): #named differently from deal_card(a_deck, num_cards) bc these are more so place-holders
     # Initialize an accumulator for the hand value.
-
+    hand_value = 0
     
     
     # DATA VALIDATION
     # Make sure the number of cards to deal is not
     # greater than the number of cards in the deck (52).
-
+    if number > 52:
+        number = 52
+        #don't need to ask to reenter, if they do more than 52, assume they want all the cards
     
     
-
     # Deal the cards and accumulate their values.
     
 
-
+    for x in range(number): #range produces iterable object, only makes it go thru that many times. otherwise it keeps going
+        list_of_cards = list(deck)
+        random_card = random.choice(list_of_cards)
+        print(random_card)
+        hand_value += deck[random_card]
+        
     
+        del deck[random_card]
+
 
     # Display the value of the hand.
+    print(f"The total of the hand is {hand_value}")
 
     
     
