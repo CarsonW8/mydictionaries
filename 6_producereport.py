@@ -207,3 +207,27 @@ ProduceDictionary={
     }
 }
 
+
+for produce,details_dict in ProduceDictionary.items():
+    calculated_total = round(details_dict['cost'] * details_dict['amt_sold'], 2)
+
+    if details_dict['total'] != calculated_total:
+        print(f"produce name: {produce}")
+        print(f"Calculated total: ${calculated_total}")
+        print(f"Stated total: ${details_dict['total']}\n")
+
+
+'''
+#the bhojwani way
+for produce,details_dictionary in ProduceDictionary.items():
+    cost = details_dictionary['cost']
+    amt_sold = details_dictionary['amt_sold']
+    stated_total = details_dictionary['total']
+
+    calc_total = round(cost * amt_sold, 2)
+
+    if stated_total != calc_total:
+        print(f"produce name: {produce}")
+        print(f"Calc total: {calc_total}")
+        print(f"Stated total: {stated_total}")
+'''
