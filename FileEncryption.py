@@ -36,8 +36,10 @@ txt_file = security_txt.read()
 
 outfile = open('encrypted.txt', 'w')
 
-for word in txt_file.split():
-    for letter in txt_file:
-        outfile.write(codes[letter])
+for word in txt_file:
+    if word in codes:
+        outfile.write(codes[word])
+    else:
+        outfile.write(' ')
 
 outfile.close()
